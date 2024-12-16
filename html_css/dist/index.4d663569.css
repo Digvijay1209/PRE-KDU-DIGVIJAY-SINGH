@@ -1,0 +1,149 @@
+body {
+  color: #333;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+  font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header {
+  color: #fff;
+  text-align: center;
+  background-color: #333;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  display: flex;
+}
+
+.header-text {
+  max-width: 60%;
+}
+
+.profile-image {
+  border-radius: 50%;
+  width: 150px;
+  height: auto;
+  margin-left: 20px;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+section {
+  background-color: #fff;
+  border-radius: 8px;
+  margin: 30px 0;
+  padding: 30px;
+  box-shadow: 0 4px 8px #0000001a;
+}
+
+section h2 {
+  color: #333;
+  border-bottom: 2px solid #333;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+  font-size: 24px;
+}
+
+section p {
+  line-height: 1.6;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 12px;
+}
+
+th {
+  background-color: #f7f7f7;
+  font-weight: bold;
+}
+
+td {
+  background-color: #fafafa;
+}
+
+.project-image {
+  border-radius: 8px;
+  width: 100%;
+  height: auto;
+  margin-top: 20px;
+}
+
+ul, ol {
+  padding: 0;
+  list-style-type: none;
+}
+
+ul li, ol li {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+ul li a {
+  color: #333;
+  text-decoration: none;
+}
+
+ul li a:hover {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.dotted-list {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.dotted-list li {
+  padding-left: 25px;
+  font-size: 16px;
+  position: relative;
+}
+
+.dotted-list li:before {
+  content: "•";
+  color: #007bff;
+  font-size: 18px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+footer {
+  text-align: center;
+  color: #fff;
+  background-color: #333;
+  width: 100%;
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+}
+
+.project h3 {
+  color: #007bff;
+  cursor: pointer;
+}
+
+.project h3:hover {
+  text-decoration: underline;
+}
+
+ul li a:hover {
+  color: #0056b3;
+}
+/*# sourceMappingURL=index.4d663569.css.map */
