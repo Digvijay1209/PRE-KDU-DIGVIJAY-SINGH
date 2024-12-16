@@ -1,5 +1,5 @@
 package com.prekdu;
-
+import java.util.*;
 /*
  * Design a Library Management System that handles different types of library resources
 (books, digital content, periodicals). The system should demonstrate(Use enums, classes, functions etc):
@@ -39,3 +39,26 @@ Requirements:
 - Implement proper validation and business logic
 
  */
+
+
+ public class App {
+ 
+     public static void main(String[] args) {
+    
+         LibraryMember member = new LibraryMember("STD001", MembershipType.STANDARD);
+         Book book = new Book("B001", "Clean Code", "Robert Martin", "978-0132350884");
+ 
+         System.out.println("Book Status: " + book.getStatus());
+ 
+      
+         member.borrowResource(book);
+         System.out.println("After borrowing, Book Status: " + book.getStatus());
+ 
+         System.out.println("Late Fee for 5 days: " + book.calculateLateFee(5));
+ 
+         
+         member.returnResource(book);
+         System.out.println("After returning, Book Status: " + book.getStatus());
+     }
+ }
+ 
