@@ -1,0 +1,81 @@
+body {
+  background-color: #f4f4f9;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+}
+
+.container {
+  background-color: #fff;
+  border-radius: 8px;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 300px;
+  padding: 20px;
+  display: flex;
+  box-shadow: 0 4px 8px #0000001a;
+}
+
+h1 {
+  color: #4a90e2;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+div {
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 15px;
+  display: flex;
+}
+
+input[type="number"] {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+input[type="number"]:focus {
+  border-color: #4a90e2;
+}
+
+button {
+  color: #fff;
+  cursor: pointer;
+  background-color: #4a90e2;
+  border: none;
+  border-radius: 4px;
+  width: 100%;
+  margin: 5px 0;
+  padding: 10px;
+  font-size: 16px;
+  transition: background-color .3s;
+}
+
+button:hover {
+  background-color: #357abd;
+}
+
+#result {
+  color: #333;
+  text-align: center;
+  background-color: #e4f0f8;
+  border: 1px solid #4a90e2;
+  border-radius: 4px;
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+/*# sourceMappingURL=index.f1c22d47.css.map */
