@@ -1,32 +1,38 @@
 package com.prekdu;
 
 public abstract class LibraryResource {
-    protected String resourceId;
-    protected String title;
-    protected ResourceStatus availabilityStatus;
+  protected String resourceId;
+  protected String title;
+  protected ResourceStatus availabilityStatus;
 
-    public LibraryResource(String resourceId, String title) {
-        this.resourceId = resourceId;
-        this.title = title;
-        this.availabilityStatus = ResourceStatus.AVAILABLE;
-    }
+  public LibraryResource(String resourceId, String title) {
+    this.resourceId = resourceId;
+    this.title = title;
+    this.availabilityStatus = ResourceStatus.AVAILABLE;
+  }
 
-    public String getResourceId() {
-        return resourceId;
-    }
+  public String getResourceId() {
+    return resourceId;
+  }
 
-    public String getTitle() {
-        return title;
-    }
+  public String getTitle() {
+    return title;
+  }
 
-    public ResourceStatus getAvailabilityStatus() {
-        return availabilityStatus;
-    }
+  public ResourceStatus getAvailabilityStatus() {
+    return availabilityStatus;
+  }
 
-    public void setAvailabilityStatus(ResourceStatus status) {
-        this.availabilityStatus = status;
-    }
+  public void setAvailabilityStatus(ResourceStatus status)
+      throws MaximumLoanExceededException, ResourceNotAvailableException {
+    availabilityStatus = status;
+  }
 
-    public abstract double calculateLateFee(int daysLate);
-    public abstract int getMaxLoanPeriod();
+  public abstract double calculateLateFee(int daysLate);
+
+  public abstract int getMaxLoanPeriod();
+
+  public ResourceStatus getStatus() {
+    return availabilityStatus;
+  }
 }

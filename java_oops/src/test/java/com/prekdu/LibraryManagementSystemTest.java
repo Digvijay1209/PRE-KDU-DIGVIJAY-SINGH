@@ -11,7 +11,7 @@ class LibraryManagementSystemTest {
   private DigitalContent digitalContent;
 
   @BeforeEach
-  void setUp() {
+  void setUp() throws MaximumLoanExceededException, ResourceNotAvailableException {
     standardMember = new LibraryMember("STD001", MembershipType.STANDARD);
     premiumMember = new LibraryMember("PRE001", MembershipType.PREMIUM);
     book = new Book("B001", "Clean Code", "Robert Martin", "978-0132350884");
@@ -19,17 +19,21 @@ class LibraryManagementSystemTest {
   }
 
   @Test
-  void testBookLateFeeCalculation() {
+  void testBookLateFeeCalculation()
+      throws MaximumLoanExceededException, ResourceNotAvailableException {
     assertEquals(5.0, book.calculateLateFee(10), 0.01);
   }
 
   @Test
-  void testDigitalContentLateFeeCalculation() {
+  void testDigitalContentLateFeeCalculation()
+      throws MaximumLoanExceededException, ResourceNotAvailableException {
     assertEquals(2.5, digitalContent.calculateLateFee(10), 0.01);
   }
 
   @Test
-  void testStandardMemberBorrowLimit() {
+  void testStandardMemberBorrowLimit()
+      throws MaximumLoanExceededException, ResourceNotAvailableException {
+
     // Attempt to borrow more than the limit
     for (int i = 0; i < 5; i++) {
       Book newBook = new Book("B00" + i, "Test Book " + i, "Author", "ISBN");
@@ -45,7 +49,9 @@ class LibraryManagementSystemTest {
   }
 
   @Test
-  void testPremiumMemberBorrowLimit() {
+  void testPremiumMemberBorrowLimit()
+      throws MaximumLoanExceededException, ResourceNotAvailableException {
+
     // Premium members should be able to borrow 10 items
     for (int i = 0; i < 10; i++) {
       Book newBook = new Book("B00" + i, "Test Book " + i, "Author", "ISBN");
@@ -56,7 +62,7 @@ class LibraryManagementSystemTest {
   }
 
   @Test
-  void testBorrowAndReturn() {
+  void testBorrowAndReturn() throws MaximumLoanExceededException, ResourceNotAvailableException {
     standardMember.borrowResource(book);
     assertEquals(ResourceStatus.BORROWED, book.getStatus());
     assertEquals(1, standardMember.getBorrowedResources().size());
@@ -67,16 +73,25 @@ class LibraryManagementSystemTest {
   }
 
   @Test
-  void testBookReservation() {
+  void testBookReservation() throws MaximumLoanExceededException, ResourceNotAvailableException {
     standardMember.borrowResource(book);
+    assertTrue(book.getAvailabilityStatus() == ResourceStatus.BORROWED);
+
     LibraryMember anotherMember = new LibraryMember("STD002", MembershipType.STANDARD);
 
-    book.reserve(anotherMember);
+    try {
+      book.reserve(anotherMember);
+      fail("Expected IllegalStateException to be thrown");
+    } catch (IllegalStateException e) {
+      assertTrue(book.getAvailabilityStatus() == ResourceStatus.BORROWED);
+    }
+
     assertFalse(book.renewLoan(standardMember));
   }
 
   @Test
-  void testResourceAvailability() {
+  void testResourceAvailability()
+      throws MaximumLoanExceededException, ResourceNotAvailableException {
     standardMember.borrowResource(book);
 
     LibraryMember anotherMember = new LibraryMember("STD002", MembershipType.STANDARD);
@@ -88,13 +103,15 @@ class LibraryManagementSystemTest {
   }
 
   @Test
-  void testDigitalContentRenewal() {
+  void testDigitalContentRenewal()
+      throws MaximumLoanExceededException, ResourceNotAvailableException {
     standardMember.borrowResource(digitalContent);
     assertTrue(digitalContent.renewLoan(standardMember));
   }
 
   @Test
-  void testInvalidReservation() {
+  void testInvalidReservation() throws MaximumLoanExceededException, ResourceNotAvailableException {
+    standardMember.borrowResource(book);
     assertThrows(
         IllegalStateException.class,
         () -> {
