@@ -1,68 +1,57 @@
 package com.prekdu;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.HashMap;
-import java.util.Scanner;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-/*
- * Create a basic Java Program that takes 10 strings as input and adds them to an ArrayList and
- * HashSet. Also, create a HashMap by populating the words as key and frequency as the value in the
- * map. Iterate the list, set and map and print the content of the collection.
- */
+import java.util.Scanner;
+import java.util.Set;
 
+/*Utilityclassdemonstrating Java collections */
+/* : ArrayList, HashSet, and HashMap. */
 public final class CollectionsExample {
 
-  public static void main(String[] args) {
-    // Created the collections to store strings, unique strings, and frequency map
-    ArrayList<String> stringList = new ArrayList<>();
-    HashSet<String> uniqueStringsSet = new HashSet<>();
-    HashMap<String, Integer> wordFrequencyMap = new HashMap<>();
-    
-    // Created a scanner object to read user input
-    Scanner scanner =new Scanner(System.in);
+  // Private constructor to prevent instantiation
+  private CollectionsExample() {
+    // Utility class, prevent instantiation
+  }
 
-   // Asking  the user to enter 10 strings
-   System.out.println("Enter 10 strings:");
+  /** The number of strings to be input by the user. */
+  private static final int NUM_STRINGS = 10;
 
-   for(int i=0;i<10;i++)
-   {
-     String inputString=scanner.nextLine();
+  /**
+   * Main method to demonstrate collections usage in Java.
+   *
+   * @param args command line arguments
+   */
+  public static void main(final String[] args) {
+    List<String> stringList = new ArrayList<>();
+    Set<String> uniqueStringsSet = new HashSet<>();
+    Map<String, Integer> wordFrequencyMap = new HashMap<>();
 
-     // Adding the input string to ArrayList (duplicates allowed)
-     stringList.add(inputString);
-      
-     // Adding the input string to HashSet (duplicates automatically removed)
-     uniqueStringsSet.add(inputString);
-     
-     // Updating the frequency of the input string in HashMap
-     if (wordFrequencyMap.containsKey(inputString))
-      {
-        wordFrequencyMap.put(inputString, wordFrequencyMap.get(inputString) + 1);
-      } 
-    else 
-     {
-      wordFrequencyMap.put(inputString, 1); 
-     }
+    // Use try-with-resources to ensure Scanner is closed
+    try (Scanner scanner = new Scanner(System.in)) {
+      System.out.println("Enter " + NUM_STRINGS + " strings:");
 
-   }
+      for (int i = 0; i < NUM_STRINGS; i++) {
+        String inputString = scanner.nextLine();
+        stringList.add(inputString);
+        int count = wordFrequencyMap.getOrDefault(inputString, 0);
+        wordFrequencyMap.put(inputString, count + 1);
+      }
+    }
 
-   scanner.close();
-   
-  // Printing the contents of the ArrayList
-   System.out.println("\nArrayList contents:");
-   for (String string : stringList) 
-   {
-    System.out.println(string);
-   }
+    System.out.println("\nArrayList contents:");
+    for (String string : stringList) {
+      System.out.println(string);
+    }
 
-    // Printing the contents of the HashSet (unique values only)
     System.out.println("\nHashSet contents (unique values):");
     for (String string : uniqueStringsSet) {
       System.out.println(string);
     }
 
-    // Printing the contents of the HashMap (word frequencies)
     System.out.println("\nHashMap contents (word frequencies):");
     for (Map.Entry<String, Integer> entry : wordFrequencyMap.entrySet()) {
       System.out.println(entry.getKey() + " : " + entry.getValue());
