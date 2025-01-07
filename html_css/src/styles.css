@@ -1,0 +1,157 @@
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    color: white;
+    padding: 20px 40px;
+    text-align: center;
+}
+
+.header-text {
+    max-width: 60%;
+}
+
+.profile-image {
+    width: 150px;
+    height: auto;
+    margin-left: 20px;
+    border-radius: 50%;
+}
+
+
+main {
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+section {
+    padding: 30px;
+    margin: 30px 0;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    color: #333;
+    font-size: 24px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+section p {
+    line-height: 1.6;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f7f7f7;
+    font-weight: bold;
+}
+
+td {
+    background-color: #fafafa;
+}
+
+
+.project-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+
+ul, ol {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li, ol li {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+ul li a {
+    color: #333;
+    text-decoration: none;
+}
+
+ul li a:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.dotted-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.dotted-list li {
+    position: relative;
+    padding-left: 25px;
+    font-size: 16px;
+}
+
+.dotted-list li::before {
+    content: '\2022';
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 18px;
+    color: #007bff;
+}
+
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+
+.project h3 {
+    color: #007bff;
+    cursor: pointer;
+}
+
+.project h3:hover {
+    text-decoration: underline;
+}
+
+ul li a:hover {
+    color: #0056b3;
+}
